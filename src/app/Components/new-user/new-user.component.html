@@ -1,0 +1,51 @@
+  <div class="login-container">
+    <div>
+        <mat-card>
+              
+         <form #newUserform="ngForm" >   
+           <mat-card-title>Create New User</mat-card-title>
+            <mat-form-field >
+                <input  [(ngModel)]="firstName" name="fisrtName" matInput  placeholder="fisrtName"  required>
+                <mat-error >
+                    firstName is required;
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field >
+              <input  [(ngModel)]="lastName" name="lastName" matInput  placeholder="lastName"  required >
+              <mat-error >
+                lastName is required;
+              </mat-error>
+           </mat-form-field>
+           
+           <mat-form-field>
+            <input matInput placeholder="email" [formControl]="emailFormControl" [(ngModel)]="email" required>
+            <mat-error *ngIf="emailFormControl.hasError('required')">
+              This field is required
+            </mat-error>
+            <mat-error *ngIf="emailFormControl.hasError('pattern')">
+              Please enter a valid email address
+            </mat-error>
+          </mat-form-field>
+          
+            <mat-form-field>
+                <input  [(ngModel)]="password" name="password" [formControl]="passwordFormControl" matInput placeholder="Password" type="password" minlength="6" required >
+                <mat-error *ngIf="passwordFormControl.hasError('required')">
+                    This field is required
+                </mat-error>
+                <mat-error *ngIf="passwordFormControl.hasError('minlength')">
+                    Password must be at least 6 characters long
+                </mat-error>
+             </mat-form-field>
+             
+             <br>
+             <button [disabled]="newUserform.invalid" mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
+         </form> 
+        </mat-card>
+    </div>
+</div>
+
+ <!--<div class="form-control-feedback"
+            *ngIf="loginform.controls.email.errors && (loginform.controls.email.dirty || loginform.controls.email.touched)">
+            <p *ngIf="loginform.controls.email.errors.required">Email is required</p>
+            <p *ngIf="loginform.controls.email.errors.pattern">Email is invalid</p>
+            </div>!-->

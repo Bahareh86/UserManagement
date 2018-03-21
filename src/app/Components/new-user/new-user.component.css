@@ -1,0 +1,35 @@
+.login-container {
+    background-color: #eee;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    align-items: center;
+    
+    
+}
+div form {
+    width: 100%;
+    
+}
+form .form-control {
+    width: 100%;
+   
+}
+.form-control input {
+    width: 100%;
+}
+.login-container div {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    width: 450px;
+    
+    }
+
+div mat-card {
+    width: 100%;
+}
+mat-card mat-form-field {
+    width: 100%;
+}    
+

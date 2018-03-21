@@ -1,0 +1,44 @@
+<div class="login-container">
+  <div>
+      <mat-card>
+            
+       <form #editUserform="ngForm" >   
+         <mat-card-title>Edit User</mat-card-title>
+          <mat-form-field >
+              <input  [(ngModel)]="firstName" name="fisrtName" matInput  placeholder="fisrtName"  required>
+              <mat-error >
+                  firstName is required;
+              </mat-error>
+          </mat-form-field>
+          <mat-form-field >
+            <input  [(ngModel)]="lastName" name="lastName" matInput  placeholder="lastName"  required >
+            <mat-error >
+              lastName is required;
+            </mat-error>
+         </mat-form-field>
+         
+         <mat-form-field>
+            <input matInput placeholder="email" [formControl]="emailFormControl" [(ngModel)]="email" required>
+            <mat-error *ngIf="emailFormControl.hasError('required')">
+              This field is required
+            </mat-error>
+            <mat-error *ngIf="emailFormControl.hasError('pattern')">
+              Please enter a valid email address
+            </mat-error>
+          </mat-form-field>
+          
+            <mat-form-field>
+                <input  [(ngModel)]="password" name="password" [formControl]="passwordFormControl" matInput placeholder="Reset Password" type="password" minlength="6" >
+                
+                <mat-error *ngIf="passwordFormControl.hasError('minlength')">
+                    Password must be at least 6 characters long
+                </mat-error>
+             </mat-form-field>
+           
+           <br>
+           <button [disabled]="editUserform.invalid" mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
+           <button  mat-raised-button color="warn" (click)=openDialog()>Delete</button>
+       </form> 
+      </mat-card>
+  </div>
+</div>

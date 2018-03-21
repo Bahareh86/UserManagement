@@ -1,0 +1,23 @@
+
+<div >
+  <mat-table #table [dataSource]="dataSource">
+
+    <!-- FullName Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef>Name </mat-header-cell>
+      <mat-cell *matCellDef="let user "> <a [routerLink]="['/EditUser', user.id]">{{user.firstName+" "+user.lastName}}</a> </mat-cell>
+    </ng-container>
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+      <mat-cell *matCellDef="let user "> {{user.email}} </mat-cell>
+    </ng-container>
+
+  
+
+    <mat-header-row *matHeaderRowDef=" ['name', 'email']"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: ['name', 'email']"></mat-row>
+  </mat-table>
+</div>
+
